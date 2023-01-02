@@ -1,0 +1,8 @@
+<input type="text" [(ngModel)]="searchTerm">
+<button (click)="search()">Pesquisar</button>
+
+<ul>
+    <li *ngFor="let image of searchResults">
+        <img [src]="image.urls.small" alt="{{ image.alt_description }}">
+    </li>
+</ul>

@@ -1,0 +1,29 @@
+<div class="dark-overlay" *ngIf="zoomed">
+    <button class="btn btn-outline-light left-icon m-2" (click)="previousImage()"><i class="fas fa-chevron-left"></i></button>
+    <button class="btn btn-outline-light right-icon m-2" (click)="nextImage()"><i class="fas fa-chevron-right"></i></button>
+  
+    <div class="menu">
+      <div class="menu-item">
+        <button class="btn btn-outline-warning" (click)="exitImage()"><i class="fas fa-times"></i> Exit</button>
+        <button class="btn btn-outline-warning favoritar" id="favoritei" *ngIf="!isFavorite()" (click)="favorite()"><i class="far fa-star"></i> Favorite</button>
+        <button class="btn btn-outline-warning" (click)="download()"><i class="fas fa-download"></i> Download</button>
+      </div>
+    </div>
+  </div>
+  
+  <ul class="nav nav-tabs mx-2 mb-2 mt-4">
+    <li class="nav-item">
+      <a class="nav-link" aria-current="page" routerLink="/">Inicial</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" routerLink="/trending">Trending</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/favoritos">Favoritos</a>
+    </li>
+  </ul>
+  
+  <div class="gallery mx-1">
+    <img *ngFor="let image of images; let i = index" [src]="image.urls.small" alt="{{ image.alt_description }}"
+      (click)="zoomImage($event)" [class.zoomed-image]="i === currentImageIndex">
+  </div>
