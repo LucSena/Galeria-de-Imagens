@@ -1,0 +1,42 @@
+.gallery {
+    column-count: 4;
+    column-gap: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+@media (max-width: 1024px) and (min-width: 768px) {
+    .gallery {
+        column-count: 3;
+    }
+}
+
+@media (max-width: 767px) {
+    .gallery {
+        column-count: 2;
+    }
+}
+
+.gallery img {
+    width: 100%;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    object-fit: cover;
+}
+
+.nav-tabs {
+    border-bottom: none;
+}
+
+.nav-link.active {
+    color: #007bff !important;
+    background-color: transparent !important;
+}
+
+.nav-link:hover {
+    color: #007bff !important;
+}
+
+.search-container {
+    width: 50%;
+    margin: 0 auto;
+}

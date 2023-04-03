@@ -27,7 +27,7 @@ export class ImageService {
   search(term: string): Observable<any[]> {
     console.log('Search term: ', term);
     // Faça uma solicitação GET à API Unsplash com o termo de pesquisa
-    return this.http.get<any[]>(`${this.unsplashUrl}?query=${term}&client_id=${this.apiKey}`);
+    return this.http.get<any[]>(`https://api.unsplash.com/search/photos?query=${term}&client_id=${this.apiKey}`);
   }
     
 }

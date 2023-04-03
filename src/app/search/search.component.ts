@@ -24,9 +24,9 @@ export class SearchComponent implements OnInit {
 
 
   search() {
-    this.imageService.search(this.searchTerm).subscribe(images => {
-      console.log('First search result: ', images[0]);
-      this.searchResults = images;
+    this.imageService.search(this.searchTerm).subscribe((data: any) => {
+      this.searchResults = data.results;
+      console.log('Search results: ', this.searchResults);
     });
   }
   

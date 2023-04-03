@@ -1,8 +1,23 @@
-<input type="text" [(ngModel)]="searchTerm">
-<button (click)="search()">Pesquisar</button>
-
-<ul>
-    <li *ngFor="let image of searchResults">
-        <img [src]="image.urls.small" alt="{{ image.alt_description }}">
+<ul class="nav nav-tabs mx-2 mb-2 mt-4">
+    <li class="nav-item">
+      <a class="nav-link" aria-current="page" routerLink="/">Inicial</a>
     </li>
-</ul>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/trending">Trending</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" routerLink="/search">Pesquise</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/favoritos">Favoritos</a>
+    </li>
+  </ul>
+  
+  <div class="input-group mb-3 search-container">
+    <input type="text" [(ngModel)]="searchTerm" class="form-control" placeholder="Pesquisar">
+    <button class="btn btn-outline-secondary" type="button" (click)="search()">Pesquisar</button>
+  </div>
+  
+  <div class="gallery mx-1">
+    <img *ngFor="let image of searchResults; let i = index" [src]="image.urls.small" alt="{{ image.alt_description }}">
+  </div>
