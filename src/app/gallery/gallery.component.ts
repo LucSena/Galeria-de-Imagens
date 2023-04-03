@@ -16,12 +16,20 @@ export class GalleryComponent {
 
   zoomImage(event: any) {
     if (this.currentImageIndex !== 0) {
+      // Remove a classe zoomed-image de todas as imagens
+      const zoomedImages = document.querySelectorAll('.gallery img');
+      zoomedImages.forEach((image, index) => {
+        image.classList.remove('zoomed-image');
+        if (image === event.target) {
+          this.currentImageIndex = index;
+        }
+      });
+  
       if (!this.zoomed) {
         this.zoomed = true;
         event.target.classList.add('zoomed-image');
       } else {
         this.zoomed = false;
-        event.target.classList.remove('zoomed-image');
       }
     }
   }
@@ -88,12 +96,18 @@ download() {
   previousImage() {
     if (this.currentImageIndex > 0) {
       this.currentImageIndex--;
+      const images = document.querySelectorAll('.gallery img');
+      images.forEach(image => image.classList.remove('zoomed-image'));
+      images[this.currentImageIndex].classList.add('zoomed-image');
     }
   }
-
+  
   nextImage() {
-    if (this.currentImageIndex < this.images.length - 1) {
+    const images = document.querySelectorAll('.gallery img');
+    if (this.currentImageIndex < images.length - 1) {
       this.currentImageIndex++;
+      images.forEach(image => image.classList.remove('zoomed-image'));
+      images[this.currentImageIndex].classList.add('zoomed-image');
     }
   }
 
